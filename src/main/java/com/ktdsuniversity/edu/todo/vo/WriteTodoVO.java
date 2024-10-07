@@ -1,8 +1,13 @@
 package com.ktdsuniversity.edu.todo.vo;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class WriteTodoVO {
 
+	@NotBlank(message = "제목을 입력해주세요")
 	private String subject;
+	
+	@NotBlank(message = "기한을 입력해주세요")
 	private String deadline;
 	
 	public String getSubject() {

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%> <%@ taglib prefix="form"
+uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,7 +9,7 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" type="text/css" href="/css/todo.css" />
   </head>
   <body>
-    <form method="post" class="form">
+    <form:form modelAttribute="writeTodoVO" method="post" class="form">
       <table class="table">
         <tr>
           <td class="td">제목</td>
@@ -18,6 +19,7 @@ pageEncoding="UTF-8"%>
               name="subject"
               id="subject"
               placeholder="제목 입력"
+              value="${writeTodoVO.subject}"
             />
           </td>
         </tr>
@@ -31,6 +33,7 @@ pageEncoding="UTF-8"%>
               id="deadline"
               onfocus="(this.type='date')"
               onblur="if(this.value===''){this.type='text'}"
+              value="${writeTodoVO.deadline}"
             />
           </td>
         </tr>
@@ -38,6 +41,6 @@ pageEncoding="UTF-8"%>
       <div class="btn-box">
         <button type="submit" class="submitBtn">등록</button>
       </div>
-    </form>
+    </form:form>
   </body>
 </html>
