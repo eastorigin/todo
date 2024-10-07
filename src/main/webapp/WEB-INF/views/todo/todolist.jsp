@@ -54,7 +54,7 @@ pageEncoding="UTF-8"%> <%@ taglib prefix="c" uri="jakarta.tags.core" %>
     <div class="btn-box">
       <button
         class="submitBtn"
-        onclick="location.href='192.168.211.29/todo/write'"
+        onclick="location.href='192.168.211.29:8080/todo/write'"
       >
         새 아이템 추가
       </button>
