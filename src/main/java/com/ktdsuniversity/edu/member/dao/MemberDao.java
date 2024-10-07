@@ -11,4 +11,6 @@ public interface MemberDao {
 	public int selectEmail(String email);
 	
 	public int selectId(String id);
+	
+	public String selectSalt(String email);
 }
