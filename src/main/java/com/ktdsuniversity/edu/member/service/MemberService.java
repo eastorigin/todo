@@ -9,4 +9,6 @@ public interface MemberService {
 	public boolean checkAvailableId(String id);
 	
 	public boolean checkAvailableEmail(String email);
+	
+	
 }
