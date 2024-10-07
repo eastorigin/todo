@@ -33,4 +33,18 @@
   		  FROM MEMBERS
  		 WHERE EMAIL = #{_parameter}
 	</select>
+	
+	<select id="selectOneMember" parameterType="com.ktdsuniversity.edu.member.vo.LoginMemberVO" resultType="com.ktdsuniversity.edu.member.vo.MemberVO">
+		SELECT EMAIL
+	 		 , ID
+	 		 , PASSWORD
+	 		 , SALT
+	 		 , LOGIN_FAIL_COUNT
+	 		 , TO_CHAR(LATEST_LOGIN_FAIL_DATE, 'YYYY-MM-DD HH24:MI:SS') LATEST_LOGIN_FAIL_DATE
+	 		 , LATEST_LOGIN_IP
+	 		 , TO_CHAR(LATEST_LOGIN_SUCCESS_DATE, 'YYYY-MM-DD HH24:MI:SS') LATEST_LOGIN_SUCCESS_DATE
+  		  FROM MEMBERS
+ 		 WHERE EMAIL = #{email}
+   		   AND PASSWORD = #{password}
+	</select>
 </mapper>

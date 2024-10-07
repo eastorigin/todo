@@ -1,12 +1,16 @@
 package com.ktdsuniversity.edu.member.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ktdsuniversity.edu.common.beans.Sha;
 import com.ktdsuniversity.edu.member.dao.MemberDao;
 import com.ktdsuniversity.edu.member.service.MemberService;
+import com.ktdsuniversity.edu.member.vo.LoginMemberVO;
+import com.ktdsuniversity.edu.member.vo.MemberVO;
 import com.ktdsuniversity.edu.member.vo.RegistMemberVO;
 
+@Service
 public class MemberServiceImpl implements MemberService{
 	
 	@Autowired
@@ -47,5 +51,25 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public boolean checkAvailableEmail(String email) {
 		return this.memberDao.selectEmail(email) == 0;
+	}
+	
+	@Override
+	public MemberVO readMember(LoginMemberVO loginMemberVO) {
+		
+		String salt = this.memberDao.selectSalt(loginMemberVO.getEmail());
+		if(salt == null) {
+			throw new IllegalArgumentException("이메일 또는 비밀번호가 올바르지 않습니다");
+		}
+		
+		String password = loginMemberVO.getPassword();
+		password = this.sha.getEncrypt(password, salt);
+		loginMemberVO.setPassword(password);
+		
+		MemberVO memberVO = this.memberDao.selectOneMember(loginMemberVO);
+		if(memberVO == null) {
+			throw new IllegalArgumentException("이메일 또는 비밀번호가 올바르지 않습니다");
+		}
+		
+		return memberVO;
 	}
 }
