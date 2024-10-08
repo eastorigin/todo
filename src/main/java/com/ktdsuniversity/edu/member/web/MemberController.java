@@ -77,6 +77,7 @@ public class MemberController {
 		return "member/loginmember";
 	}
 	
+	@PostMapping("/member/login")
 	public String doLogin(@Valid LoginMemberVO loginMemberVO, BindingResult bindingResult, HttpSession httpSession, Model model) {
 		if(bindingResult.hasErrors()) {
 			model.addAttribute("loginMemberVO", loginMemberVO);

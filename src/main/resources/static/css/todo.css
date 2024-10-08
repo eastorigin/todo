@@ -20,6 +20,7 @@ body {
 .form {
   display: flex;
   width: 100%;
+  height: 30vh;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -51,4 +52,12 @@ input {
   justify-content: flex-end;
   width: 80%;
   margin-top: 1%;
+}
+
+.email-box {
+  display: flex;
+}
+
+.id-box {
+  display: flex;
 }

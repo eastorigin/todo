@@ -2,13 +2,13 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper>
+<mapper namespace="com.ktdsuniversity.edu.member.dao.MemberDao">
 	<insert id="insertNewMember" parameterType="com.ktdsuniversity.edu.member.vo.RegistMemberVO">
-		INSERT INTO MEMBERS
+		INSERT INTO MEMBERS (
    		   EMAIL
  		 , ID
  		 , PASSWORD
- 		 , SALT
+ 		 , SALT )
 		VALUES (
    		   #{email}
  		 , #{id}
@@ -28,7 +28,7 @@
  		 WHERE ID = #{_parameter}
 	</select>
 	
-	<select id="selectSalt" parameterType="string" resultType="_int">
+	<select id="selectSalt" parameterType="string" resultType="string">
 		SELECT SALT
   		  FROM MEMBERS
  		 WHERE EMAIL = #{_parameter}

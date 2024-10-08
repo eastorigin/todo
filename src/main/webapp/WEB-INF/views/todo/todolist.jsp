@@ -11,8 +11,8 @@ pageEncoding="UTF-8"%> <%@ taglib prefix="c" uri="jakarta.tags.core" %>
     <table class="table">
       <thead>
         <tr>
-          <th class="th">상태</th>
           <th class="th">번호</th>
+          <th class="th">상태</th>
           <th class="th">제목</th>
           <th class="th">기한</th>
           <th class="th">버튼</th>
@@ -52,10 +52,7 @@ pageEncoding="UTF-8"%> <%@ taglib prefix="c" uri="jakarta.tags.core" %>
       </tbody>
     </table>
     <div class="btn-box">
-      <button
-        class="submitBtn"
-        onclick="location.href='/todo/write'"
-      >
+      <button class="submitBtn" onclick="location.href='/todo/write'">
         새 아이템 추가
       </button>
     </div>
