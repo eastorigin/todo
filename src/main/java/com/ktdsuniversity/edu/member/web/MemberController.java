@@ -49,7 +49,7 @@ public class MemberController {
 	}
 	
 	@ResponseBody
-	@GetMapping("/member/regist/available")
+	@GetMapping("/member/regist/available/email")
 	public Map<String, Object> doCheckAvailableEmail(@RequestParam String email) {
 		
 		boolean isAvailableEmail = this.memberService.checkAvailableEmail(email);
@@ -61,7 +61,7 @@ public class MemberController {
 	}
 	
 	@ResponseBody
-	@GetMapping("/member/regist/available")
+	@GetMapping("/member/regist/available/id")
 	public Map<String, Object> doCheckAvailableId(@RequestParam String id) {
 		
 		boolean isAvailableId = this.memberService.checkAvailableId(id);

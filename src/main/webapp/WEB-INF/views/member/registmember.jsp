@@ -25,11 +25,13 @@ uri="http://www.springframework.org/tags/form" %>
             value="${registMemberVO.email}"
           />
         </div>
-        <label for="id">이름</label>
+        <button>중복 확인</button>
+        <label for="id">아이디</label>
         <div>
           <form:errors path="id" element="div" cssClass="errors" />
           <input type="text" id="id" name="id" value="${registMemberVO.id}" />
         </div>
+        <button>중복 확인</button>
         <label for="password">비밀번호</label>
         <div>
           <form:errors path="password" element="div" cssClass="errors" />
