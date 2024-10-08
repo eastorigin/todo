@@ -7,6 +7,7 @@ uri="jakarta.tags.core" %>
   <head>
     <meta charset="UTF-8" />
     <title>로그인</title>
+    <link rel="stylesheet" type="text/css" href="/css/todo.css" />
   </head>
   <body>
     <h1>로그인</h1>
