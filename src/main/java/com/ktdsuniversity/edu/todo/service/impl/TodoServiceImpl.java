@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ktdsuniversity.edu.member.vo.MemberVO;
 import com.ktdsuniversity.edu.todo.dao.TodoDao;
 import com.ktdsuniversity.edu.todo.service.TodoService;
 import com.ktdsuniversity.edu.todo.vo.TodoListVO;
@@ -18,8 +19,8 @@ public class TodoServiceImpl implements TodoService{
 	private TodoDao todoDao;
 	
 	@Override
-	public TodoListVO selectAllTodo() {
-		List<TodoVO> TodoList = this.todoDao.selectAllTodo();
+	public TodoListVO selectAllTodo(MemberVO memberVO) {
+		List<TodoVO> TodoList = this.todoDao.selectAllTodo(memberVO);
 		
 		TodoListVO todoListVO = new TodoListVO();
 		todoListVO.setTodoList(TodoList);

@@ -26,9 +26,9 @@ public class TodoController {
 	private TodoService todoService;
 	
 	@GetMapping("/todo/list")
-	public String viewTodoList(Model model) {
+	public String viewTodoList(Model model,@SessionAttribute(value = "_LOGIN_USER", required = false) MemberVO loginMemberVO) {
 		
-		TodoListVO todoListVO = this.todoService.selectAllTodo();
+		TodoListVO todoListVO = this.todoService.selectAllTodo(loginMemberVO);
 		
 		model.addAttribute("todoListVO", todoListVO);
 		

@@ -5,32 +5,34 @@
 <mapper namespace="com.ktdsuniversity.edu.todo.dao.TodoDao">
 
 	<resultMap type="com.ktdsuniversity.edu.todo.vo.TodoVO" id="todoVOMap" autoMapping="true">
-		<id column="ID" property="id" />
-		<association property="memberVO" javaType="com.ktdsuniversity.edu.member.vo.MemberVO" autoMapping="true">
+		<id column="TODOID" property="id" />
+		<association property="memberVO" javaType="com.ktdsuniversity.edu.member.vo.MemberVO">
 			<id column="EMAIL" property="email" />
+			<result column="MEMBERID" property="id"/>
 		</association>
 	</resultMap>
 
-	<select id="selectAllTodo" resultMap="todoVOMap">
-	SELECT t.ID
+	<select id="selectAllTodo" parameterType="com.ktdsuniversity.edu.member.vo.MemberVO" resultMap="todoVOMap">
+	SELECT t.ID AS TODOID
 	 	 , t.SUBJECT
 	 	 , t.STATUS
 	 	 , TO_CHAR(t.DEADLINE, 'YYYY-MM-DD') DEADLINE
 	 	 , t.EMAIL
-	 	 , m.ID 
+	 	 , m.ID AS MEMBERID
   	  FROM TODO t
   	 INNER JOIN MEMBERS m
   	    ON t.EMAIL = m.EMAIL
+  	  WHERE t.EMAIL = #{email}
   	 ORDER BY t.ID DESC
 	</select>
 	
 	<select id="selectOneTodo" parameterType="_int" resultMap="todoVOMap">
-	SELECT t.ID 
+	SELECT t.ID AS TODOID
 	 	 , t.SUBJECT
 	 	 , t.STATUS
 	 	 , TO_CHAR(t.DEADLINE, 'YYYY-MM-DD') DEADLINE
 	 	 , t.EMAIL
-	 	 , m.ID 
+	 	 , m.ID AS MEMBERID
   	  FROM TODO t
   	 INNER JOIN MEMBERS m
   	    ON t.EMAIL = m.EMAIL

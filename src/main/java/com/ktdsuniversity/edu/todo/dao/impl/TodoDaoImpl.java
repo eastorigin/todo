@@ -7,6 +7,7 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ktdsuniversity.edu.member.vo.MemberVO;
 import com.ktdsuniversity.edu.todo.dao.TodoDao;
 import com.ktdsuniversity.edu.todo.vo.TodoVO;
 import com.ktdsuniversity.edu.todo.vo.WriteTodoVO;
@@ -22,8 +23,8 @@ public class TodoDaoImpl extends SqlSessionDaoSupport implements TodoDao{
 	}
 	
 	@Override
-	public List<TodoVO> selectAllTodo() {
-		return this.getSqlSession().selectList("com.ktdsuniversity.edu.todo.dao.TodoDao.selectAllTodo");
+	public List<TodoVO> selectAllTodo(MemberVO memberVO) {
+		return this.getSqlSession().selectList("com.ktdsuniversity.edu.todo.dao.TodoDao.selectAllTodo", memberVO);
 	}
 	
 	@Override

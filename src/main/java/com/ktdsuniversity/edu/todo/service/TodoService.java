@@ -1,12 +1,13 @@
 package com.ktdsuniversity.edu.todo.service;
 
+import com.ktdsuniversity.edu.member.vo.MemberVO;
 import com.ktdsuniversity.edu.todo.vo.TodoListVO;
 import com.ktdsuniversity.edu.todo.vo.TodoVO;
 import com.ktdsuniversity.edu.todo.vo.WriteTodoVO;
 
 public interface TodoService {
 
-	public TodoListVO selectAllTodo();
+	public TodoListVO selectAllTodo(MemberVO memberVO);
 	
 	public TodoVO selectOneTodo(int id);
 	
