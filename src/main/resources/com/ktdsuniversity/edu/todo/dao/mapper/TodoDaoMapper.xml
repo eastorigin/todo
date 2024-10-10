@@ -25,7 +25,7 @@
 	</select>
 	
 	<select id="selectOneTodo" parameterType="_int" resultMap="todoVOMap">
-	SELECT t.ID
+	SELECT t.ID 
 	 	 , t.SUBJECT
 	 	 , t.STATUS
 	 	 , TO_CHAR(t.DEADLINE, 'YYYY-MM-DD') DEADLINE
@@ -34,7 +34,7 @@
   	  FROM TODO t
   	 INNER JOIN MEMBERS m
   	    ON t.EMAIL = m.EMAIL
- 	 WHERE ID = #{_parameter}
+ 	 WHERE t.ID = #{_parameter}
 	</select>
 	
 	<insert id="insertNewTodo" parameterType="com.ktdsuniversity.edu.todo.vo.WriteTodoVO">

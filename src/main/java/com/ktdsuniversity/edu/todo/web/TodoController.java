@@ -7,11 +7,16 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.ktdsuniversity.edu.member.vo.MemberVO;
 import com.ktdsuniversity.edu.todo.service.TodoService;
 import com.ktdsuniversity.edu.todo.vo.TodoListVO;
 import com.ktdsuniversity.edu.todo.vo.WriteTodoVO;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
 @Controller
@@ -36,11 +41,17 @@ public class TodoController {
 	}
 	
 	@PostMapping("/todo/write")
-	public String doInsertOneTodo(@Valid WriteTodoVO writeTodoVO, BindingResult bindingResult, Model model) {
+	public String doInsertOneTodo(@Valid WriteTodoVO writeTodoVO, BindingResult bindingResult, Model model, @SessionAttribute(value = "_LOGIN_USER", required = false) MemberVO loginMemberVO) {
 		if(bindingResult.hasErrors()) {
 			model.addAttribute("writeTodoVO", writeTodoVO);
 			return "todo/todowrite";
 		}
+		
+		if(loginMemberVO == null) {
+			return "redirect:/member/login";
+		}
+		
+		writeTodoVO.setEmail(loginMemberVO.getEmail());
 		
 		this.todoService.insertNewTodo(writeTodoVO);
 		return "redirect:/todo/list";
