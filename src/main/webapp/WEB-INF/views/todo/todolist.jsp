@@ -15,6 +15,7 @@ pageEncoding="UTF-8"%> <%@ taglib prefix="c" uri="jakarta.tags.core" %>
           <th class="th">상태</th>
           <th class="th">제목</th>
           <th class="th">기한</th>
+          <th class="th">이메일</th>
           <th class="th">버튼</th>
           <th class="th">버튼</th>
         </tr>
@@ -28,6 +29,7 @@ pageEncoding="UTF-8"%> <%@ taglib prefix="c" uri="jakarta.tags.core" %>
                 <td class="td">${todo.status}</td>
                 <td class="td">${todo.subject}</td>
                 <td class="td">${todo.deadline}</td>
+                <td class="td">${todo.memberVO.id} (${todo.memberVO.email})</td>
                 <td class="td">
                   <c:if test="${todo.status != 'DONE'}">
                     <a href="<c:url value='/todo/modify/${todo.id}' />">
