@@ -60,9 +60,10 @@
  	 WHERE ID = #{id}
 	</update>
 	
-	<delete id="deleteOneTodo" parameterType="_int">
+	<delete id="deleteOneTodo" parameterType="com.ktdsuniversity.edu.todo.vo.DeleteTodoVO">
 	DELETE
   	  FROM TODO
- 	 WHERE ID = #{_parameter}
+ 	 WHERE ID = #{id}
+ 	   AND EMAIL = #{email}
 	</delete>
 </mapper>

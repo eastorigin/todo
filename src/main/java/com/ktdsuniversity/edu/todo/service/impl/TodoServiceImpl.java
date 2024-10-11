@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.ktdsuniversity.edu.member.vo.MemberVO;
 import com.ktdsuniversity.edu.todo.dao.TodoDao;
 import com.ktdsuniversity.edu.todo.service.TodoService;
+import com.ktdsuniversity.edu.todo.vo.DeleteTodoVO;
 import com.ktdsuniversity.edu.todo.vo.TodoListVO;
 import com.ktdsuniversity.edu.todo.vo.TodoVO;
 import com.ktdsuniversity.edu.todo.vo.WriteTodoVO;
@@ -50,8 +51,8 @@ public class TodoServiceImpl implements TodoService{
 	}
 	
 	@Override
-	public boolean deleteOneTodo(int id) {
-		int deleteCount = todoDao.deleteOneTodo(id);
+	public boolean deleteOneTodo(DeleteTodoVO deleteTodoVO) {
+		int deleteCount = todoDao.deleteOneTodo(deleteTodoVO);
 		return deleteCount > 0;
 	}
 }

@@ -42,6 +42,13 @@ uri="jakarta.tags.core" %>
             <input type="submit" value="로그인" />
           </div>
         </div>
+        <div class="btn-group">
+          <div class="right-align">
+            <a href="/member/regist">
+              <button type="button">회원가입</button>
+            </a>
+          </div>
+        </div>
       </div>
     </form:form>
   </body>

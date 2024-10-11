@@ -8,15 +8,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.ktdsuniversity.edu.member.vo.MemberVO;
 import com.ktdsuniversity.edu.todo.service.TodoService;
+import com.ktdsuniversity.edu.todo.vo.DeleteTodoVO;
 import com.ktdsuniversity.edu.todo.vo.TodoListVO;
 import com.ktdsuniversity.edu.todo.vo.WriteTodoVO;
 
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
 @Controller
@@ -64,8 +62,13 @@ public class TodoController {
 	}
 	
 	@GetMapping("/todo/delete/{id}")
-	public String doDeleteOneTodo(@PathVariable int id) {
-		boolean isDeleted = this.todoService.deleteOneTodo(id);
+	public String doDeleteOneTodo(@PathVariable int id, @SessionAttribute("_LOGIN_USER") MemberVO memberVO) {
+		
+		DeleteTodoVO deleteTodoVO = new DeleteTodoVO();
+		deleteTodoVO.setId(id);
+		deleteTodoVO.setEmail(memberVO.getEmail());
+		
+		boolean isDeleted = this.todoService.deleteOneTodo(deleteTodoVO);
 		
 		if(isDeleted) {
 			return "redirect:/todo/list";

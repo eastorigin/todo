@@ -15,7 +15,7 @@ pageEncoding="UTF-8"%> <%@ taglib prefix="c" uri="jakarta.tags.core" %>
           <th class="th">상태</th>
           <th class="th">제목</th>
           <th class="th">기한</th>
-          <th class="th">이메일</th>
+          <th class="th">(아이디)이메일</th>
           <th class="th">버튼</th>
           <th class="th">버튼</th>
         </tr>

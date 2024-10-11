@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ktdsuniversity.edu.member.vo.MemberVO;
 import com.ktdsuniversity.edu.todo.dao.TodoDao;
+import com.ktdsuniversity.edu.todo.vo.DeleteTodoVO;
 import com.ktdsuniversity.edu.todo.vo.TodoVO;
 import com.ktdsuniversity.edu.todo.vo.WriteTodoVO;
 
@@ -33,8 +34,8 @@ public class TodoDaoImpl extends SqlSessionDaoSupport implements TodoDao{
 	}
 	
 	@Override
-	public int deleteOneTodo(int id) {
-		return this.getSqlSession().delete("com.ktdsuniversity.edu.todo.dao.TodoDao.deleteOneTodo", id);
+	public int deleteOneTodo(DeleteTodoVO deleteTodoVO) {
+		return this.getSqlSession().delete("com.ktdsuniversity.edu.todo.dao.TodoDao.deleteOneTodo", deleteTodoVO);
 	}
 	
 	@Override
