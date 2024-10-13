@@ -10,3 +10,30 @@ logging:
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:com/ktdsuniversity/edu/**/dao/mapper/*Mapper.xml
+app:
+  multipart:
+    base-dir: C:\\uploadfiles
+    obfuscation:
+      enable: true
+      hide-ext:
+        enable: true
+  interceptors:
+    check-session:
+      path-patterns: /**
+      exclude-path-patterns:
+        /js/**,
+        /css/**,
+        /image/**,
+        /member/login,
+        /member/regist/**
+    check-dup-login:
+      path-patterns:
+        /member/login,
+        /member/regist/**
+      exclude-path-patterns:
+    add-access-log:
+      path-patterns: /**
+      exclude-path-patterns:
+        /js/**,
+        /css/**,
+        /image/**

@@ -54,6 +54,9 @@ pageEncoding="UTF-8"%> <%@ taglib prefix="c" uri="jakarta.tags.core" %>
       </tbody>
     </table>
     <div class="btn-box">
+      <a href="/todo/excel/download">
+        <button type="button">엑셀 다운로드</button>
+      </a>
       <button class="submitBtn" onclick="location.href='/todo/write'">
         새 아이템 추가
       </button>
