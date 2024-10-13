@@ -8,9 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.ktdsuniversity.edu.member.service.MemberService;
 import com.ktdsuniversity.edu.member.vo.LoginMemberVO;
@@ -95,5 +97,34 @@ public class MemberController {
 		}
 		
 		return "redirect:/todo/list";
+	}
+	
+	@GetMapping("/member/logout")
+	public String doLogOout(HttpSession httpSession) {
+		httpSession.invalidate();
+		return "redirect:/todo/list";
+	}
+	
+	@GetMapping("/member/delete")
+	public String doDeleteMe(@SessionAttribute("_LOGIN_USER") MemberVO memberVO, HttpSession httpSession) {
+		
+		boolean isSuccess = memberService.deleteMe(memberVO.getEmail());
+		
+		if(!isSuccess) {
+			return "redirect:/member/fail-delete";
+		}
+		
+		httpSession.invalidate();
+		return "redirect:/member/success-delete";
+	}
+	
+	@GetMapping("/member/{result}-delete")
+	public String viewDeleteMyPage(@PathVariable String result) {
+		
+		result = result.toLowerCase();
+		if(!result.equals("fail") && !result.equals("success")) {
+			return "error/404";
+		}
+		return "member/" + result + "delete";
 	}
 }

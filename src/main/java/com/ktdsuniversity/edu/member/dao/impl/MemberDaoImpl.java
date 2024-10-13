@@ -43,4 +43,9 @@ public class MemberDaoImpl extends SqlSessionDaoSupport implements MemberDao{
 	public MemberVO selectOneMember(LoginMemberVO loginMemeberVO) {
 		return this.getSqlSession().selectOne(NAMESPACE + ".selectOneMember", loginMemeberVO);
 	}
+	
+	@Override
+	public int deleteMe(String email) {
+		return this.getSqlSession().delete(NAMESPACE + ".deleteMe", email);
+	}
 }

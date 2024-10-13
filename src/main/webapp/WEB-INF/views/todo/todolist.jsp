@@ -61,5 +61,8 @@ pageEncoding="UTF-8"%> <%@ taglib prefix="c" uri="jakarta.tags.core" %>
         새 아이템 추가
       </button>
     </div>
+    <div class="member-menu">
+      <jsp:include page="../member/membermenu.jsp"></jsp:include>
+    </div>
   </body>
 </html>

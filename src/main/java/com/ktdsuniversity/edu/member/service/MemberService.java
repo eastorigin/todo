@@ -13,4 +13,6 @@ public interface MemberService {
 	public boolean checkAvailableEmail(String email);
 	
 	public MemberVO readMember(LoginMemberVO loginMemberVO);
+	
+	public boolean deleteMe(String email);
 }

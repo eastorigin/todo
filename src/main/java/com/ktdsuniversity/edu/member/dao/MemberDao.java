@@ -17,4 +17,6 @@ public interface MemberDao {
 	public String selectSalt(String email);
 	
 	public MemberVO selectOneMember(LoginMemberVO loginMemeberVO);
+	
+	public int deleteMe(String email);
 }

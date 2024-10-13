@@ -47,4 +47,10 @@
  		 WHERE EMAIL = #{email}
    		   AND PASSWORD = #{password}
 	</select>
+	
+	<delete id="deleteMe" parameterType="string">
+		DELETE
+		  FROM MEMBERS
+		 WHERE EMAIL = #{email}
+	</delete>
 </mapper>
