@@ -2,6 +2,7 @@ package com.ktdsuniversity.edu.member.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ktdsuniversity.edu.common.beans.Sha;
 import com.ktdsuniversity.edu.member.dao.MemberDao;
@@ -19,6 +20,7 @@ public class MemberServiceImpl implements MemberService{
 	@Autowired
 	private Sha sha;
 
+	@Transactional
 	@Override
 	public boolean insertNewMember(RegistMemberVO registMemberVO) {
 		int emailCount = memberDao.selectEmail(registMemberVO.getEmail());
@@ -73,6 +75,7 @@ public class MemberServiceImpl implements MemberService{
 		return memberVO;
 	}
 	
+	@Transactional
 	@Override
 	public boolean deleteMe(String email) {
 		int deleteCount = memberDao.deleteMe(email);

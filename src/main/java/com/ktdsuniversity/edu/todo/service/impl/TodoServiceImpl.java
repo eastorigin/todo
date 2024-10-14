@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ktdsuniversity.edu.member.vo.MemberVO;
 import com.ktdsuniversity.edu.todo.dao.TodoDao;
@@ -35,12 +36,14 @@ public class TodoServiceImpl implements TodoService{
 		return todoVO;
 	}
 	
+	@Transactional
 	@Override
 	public boolean insertNewTodo(WriteTodoVO writeTodoVO) {
 		int insertCount = this.todoDao.insertNewTodo(writeTodoVO);
 		return insertCount > 0;
 	}
 	
+	@Transactional
 	@Override
 	public void updateOneTodoStatus(int id) {
 		TodoVO todoVO = todoDao.selectOneTodo(id);
@@ -50,6 +53,7 @@ public class TodoServiceImpl implements TodoService{
 		}
 	}
 	
+	@Transactional
 	@Override
 	public boolean deleteOneTodo(DeleteTodoVO deleteTodoVO) {
 		int deleteCount = todoDao.deleteOneTodo(deleteTodoVO);
